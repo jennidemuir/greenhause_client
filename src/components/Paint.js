@@ -31,6 +31,12 @@ const paint = Painterro({
 });
 
 class Paint extends Component {
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      this.props.history.push("/login");
+    }
+  }
   render() {
     return <div> {paint.show()}</div>;
   }

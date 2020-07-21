@@ -1,6 +1,10 @@
 const API_ROOT = `http://localhost:5000/api/v1`;
-
 const token = localStorage.getItem("token");
+// trefle api
+const trefleToken = `aVBFUDBJTEdnbWs5WlBCMTdKcDdCZz09`;
+const trefelRoot = `https://trefle.io/api/v1/plants/search?token=${trefleToken}&q=`;
+//proxy
+const proxy = `https://cors-anywhere.herokuapp.com`;
 
 const headers = {
   "Content-Type": "application/json",
@@ -41,6 +45,12 @@ const postCanvas = (image) => {
   });
 };
 
+const searchPlants = (searchvalue) => {
+  return fetch(`${proxy}/${trefelRoot}&q=${searchvalue}`).then((res) =>
+    res.json()
+  );
+};
+
 export default {
   auth: {
     login: login,
@@ -49,5 +59,8 @@ export default {
   canvas: {
     getCanvas,
     postCanvas,
+  },
+  plants: {
+    searchPlants,
   },
 };

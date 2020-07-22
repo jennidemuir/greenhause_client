@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import api from "../services/api";
 import PlantProfileCard from "./PlantProfileCard";
 import Plants from "./Plants";
+import Userinfo from "./Userinfo";
 
 class Profile extends Component {
   state = {
@@ -29,7 +30,8 @@ class Profile extends Component {
   render() {
     return (
       <div className="body">
-        <h1>Profile</h1>
+        <br></br>
+        <Userinfo />
         <br></br>
         {this.state.plants.map((p) => {
           return (

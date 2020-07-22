@@ -28,6 +28,24 @@ const getCurrentUser = () => {
   }).then((res) => res.json());
 };
 
+const getUserInfo = () => {
+  return fetch(`${API_ROOT}/profile`, {
+    headers: headers(),
+  }).then((res) => res.json());
+};
+
+const postCurrentUser = (value) => {
+  return fetch(`${API_ROOT}/profile`, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify({
+      user: {
+        bio: value,
+      },
+    }),
+  }).then((res) => res.json());
+};
+
 const getCanvas = () => {
   return fetch(`${API_ROOT}/canvas/`, { headers: headers() }).then((res) =>
     res.json()
@@ -80,6 +98,8 @@ export default {
   auth: {
     login: login,
     getCurrentUser: getCurrentUser,
+    postCurrentUser,
+    getUserInfo,
   },
   canvas: {
     getCanvas,

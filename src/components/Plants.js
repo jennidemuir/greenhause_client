@@ -15,7 +15,6 @@ class Plants extends Component {
   }
 
   handleSearch = (searchValue) => {
-    //
     return api.plants.searchPlants(searchValue).then((resp) => {
       this.setState({
         plants: resp.data,
@@ -26,8 +25,10 @@ class Plants extends Component {
   render() {
     return (
       <div className="body">
-        Plants
+        <h1>Plants</h1>
+        <br></br>
         <Search handleSearch={this.handleSearch} />
+        <br></br>
         {this.state.plants.map((p) => {
           return <PlantCard key={p.id} p={p} />;
         })}

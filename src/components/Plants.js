@@ -15,9 +15,8 @@ class Plants extends Component {
   }
 
   handleSearch = (searchValue) => {
-    // console.log(searchValue);
+    //
     return api.plants.searchPlants(searchValue).then((resp) => {
-      console.log(resp);
       this.setState({
         plants: resp.data,
       });

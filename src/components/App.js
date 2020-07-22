@@ -35,6 +35,10 @@ class App extends Component {
     localStorage.clear();
     this.setState({ auth: { currentUser: {} } });
   };
+
+  getPlants = () => {
+    api.plants.getPlants.then((res) => console.log(res));
+  };
   render() {
     return (
       <div>

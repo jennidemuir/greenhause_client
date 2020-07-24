@@ -3,10 +3,13 @@ import api from "../services/api";
 import PlantProfileCard from "./PlantProfileCard";
 import Plants from "./Plants";
 import Userinfo from "./Userinfo";
-
+import Toggle from "./Toggle";
+import Noteform from "./Noteform";
+import Canvasinfo from "./Canvasinfo";
 class Profile extends Component {
   state = {
     plants: [],
+    canvas: [],
   };
   componentDidMount() {
     const token = localStorage.getItem("token");
@@ -19,7 +22,21 @@ class Profile extends Component {
         plants: plantdata,
       })
     );
+    api.canvas.getCanvas().then(
+      (data) => (
+        console.log(data),
+        this.setState({
+          canvas: data,
+        })
+      )
+    );
   }
+  renderFilteredCanvas = (canvasId) => {
+    const filterCanvas = this.state.canvas.filter((c) => c.id !== canvasId);
+    this.setState({
+      canvas: filterCanvas,
+    });
+  };
 
   renderFilteredPlants = (plantId) => {
     const filterPlants = this.state.plants.filter((p) => p.id !== plantId);
@@ -27,6 +44,7 @@ class Profile extends Component {
       plants: filterPlants,
     });
   };
+
   render() {
     return (
       <div className="body">
@@ -40,6 +58,29 @@ class Profile extends Component {
               key={p.id}
               p={p}
             />
+          );
+        })}
+        {this.state.canvas.map((c) => {
+          return (
+            <Canvasinfo
+              renderFilteredCanvas={this.renderFilteredCanvas}
+              key={c.id}
+              img={c.image}
+              note={c.canvas_notes}
+              id={c.id}
+            />
+            // <div>
+            //   <img src={c.image} />
+            //   <p>{c.canvas_notes}</p>
+            //   <Toggle>
+            //     {({ on, toggle }) => (
+            //       <div>
+            //         <button onClick={toggle}>Make a Note</button>
+            //         {on && <Noteform on={on} id={c.id} />}
+            //       </div>
+            //     )}
+            //   </Toggle>
+            // </div>
           );
         })}
       </div>

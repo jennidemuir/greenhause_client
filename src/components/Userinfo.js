@@ -20,6 +20,11 @@ export class Userinfo extends Component {
       )
     );
   }
+  renderBio = (value) => {
+    this.setState({
+      bio: value,
+    });
+  };
   render() {
     return (
       <div>
@@ -30,7 +35,7 @@ export class Userinfo extends Component {
           {({ on, toggle }) => (
             <div>
               <button onClick={toggle}>Edit Bio</button>
-              {on && <Userform on={on} />}
+              {on && <Userform renderBio={this.renderBio} on={on} />}
             </div>
           )}
         </Toggle>

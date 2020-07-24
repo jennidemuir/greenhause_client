@@ -60,15 +60,8 @@ class App extends Component {
             <Route path="/Signup" component={Signup} />
             <Route path="/plants" component={Plants} />
             <Route path="/design" component={Canvas} />
-            <Route path="/" component={Profile} />
-            <Route
-              path="/"
-              render={() => {
-                const loggedIn = !!this.state.auth.currentUser.id;
+            {/* <Route path="/" component={Profile} /> */}
 
-                return loggedIn ? <Profile /> : <Redirect to="/login" />;
-              }}
-            />
             <Route
               path="/design"
               render={() => {
@@ -83,6 +76,14 @@ class App extends Component {
                 const loggedIn = !!this.state.auth.currentUser.id;
 
                 return loggedIn ? <Plants /> : <Redirect to="/login" />;
+              }}
+            />
+            <Route
+              path="/"
+              render={() => {
+                const loggedIn = !!this.state.auth.currentUser.id;
+
+                return loggedIn ? <Profile /> : <Redirect to="/login" />;
               }}
             />
           </Switch>

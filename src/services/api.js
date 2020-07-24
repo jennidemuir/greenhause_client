@@ -34,9 +34,9 @@ const getUserInfo = () => {
   }).then((res) => res.json());
 };
 
-const postCurrentUser = (value) => {
+const patchCurrentUser = (value) => {
   return fetch(`${API_ROOT}/profile`, {
-    method: "POST",
+    method: "PATCH",
     headers: headers(),
     body: JSON.stringify({
       user: {
@@ -53,15 +53,38 @@ const getCanvas = () => {
 };
 
 const postCanvas = (image) => {
+  // console.log({
+  //   canvas: {
+  //     image: image,
+  //   },
+  // });
   return fetch(`${API_ROOT}/canvas/`, {
     method: "POST",
     headers: headers(),
     body: JSON.stringify({
       canvas: {
-        canvas: image,
-        user_id: localStorage.getItem("id"),
+        image: image,
       },
     }),
+  });
+};
+
+const editCanvasNote = (value, id) => {
+  return fetch(`${API_ROOT}/canvas/${id}`, {
+    method: "PATCH",
+    headers: headers(),
+    body: JSON.stringify({
+      canvas: {
+        canvas_notes: value,
+      },
+    }),
+  });
+};
+
+const deleteCanvas = (id) => {
+  return fetch(`${API_ROOT}/canvas/${id}`, {
+    method: "DELETE",
+    headers: headers(),
   });
 };
 
@@ -98,12 +121,14 @@ export default {
   auth: {
     login: login,
     getCurrentUser: getCurrentUser,
-    postCurrentUser,
+    patchCurrentUser,
     getUserInfo,
   },
   canvas: {
     getCanvas,
     postCanvas,
+    editCanvasNote,
+    deleteCanvas,
   },
   plants: {
     searchPlants,

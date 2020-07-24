@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { TextField } from "@material-ui/core";
 import api from "../services/api";
 
-class Userform extends Component {
+export class Noteform extends Component {
   state = {
-    value: " ",
+    value: "",
   };
 
   handleChange = (e) => {
@@ -15,19 +14,20 @@ class Userform extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state.value);
-    api.auth.patchCurrentUser(this.state.value);
-    this.props.renderBio(this.state.value);
+    console.log(e.target.id);
+    api.canvas.editCanvasNote(this.state.value, e.target.id);
+    this.props.renderNote(this.state.value);
   };
 
   render() {
     return (
       <div>
         <br></br>
-        <form onSubmit={this.handleSubmit}>
+        <form id={this.props.id} onSubmit={this.handleSubmit}>
           <label>
-            Bio:
+            Take Note:
             <input
+              placeholder={this.props.note}
               type="text"
               value={this.state.value}
               onChange={this.handleChange}
@@ -40,4 +40,4 @@ class Userform extends Component {
   }
 }
 
-export default Userform;
+export default Noteform;

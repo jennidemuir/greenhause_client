@@ -5,13 +5,16 @@ import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import api from "../services/api";
 
 const paint = Painterro({
-  saveHandler: function (image) {
+  saveHandler: function (image, done) {
+    // console.log("dataurl", image.asDataURL(), "done", done),
+
+    // const formData = new FormData();
+    // console.log(image.asDataURL());
+    // formData.append("image", image.asBlob());
     api.canvas.postCanvas(image.asDataURL());
-    // var formData = new FormData();
-    // formData.append("image", image.asDataURL());
-    //     // you can also pass suggested filename
-    //     // formData.append('image', image.asBlob(), image.suggestedFileName());
-    // var xhr = new XMLHttpRequest();
+    // you can also pass suggested filename
+    // formData.append('image', image.asBlob(), image.suggestedFileName());
+    // const xhr = new XMLHttpRequest();
     // xhr.open("POST", "http://localhost:5000/api/v1/canvas", true);
     // xhr.onload = xhr.onerror = function () {
     //   done(true);
@@ -19,7 +22,7 @@ const paint = Painterro({
     // xhr.send(formData);
   },
   onClose: function () {
-    window.location.href = "/";
+    window.location.href = "/design";
 
     //     return console.log("hi");
   },

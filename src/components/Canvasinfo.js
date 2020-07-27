@@ -4,7 +4,7 @@ import Toggle from "./Toggle";
 import api from "../services/api";
 export class Noteinfo extends Component {
   state = {
-    note: " ",
+    note: "",
   };
   componentDidMount() {
     this.setState({

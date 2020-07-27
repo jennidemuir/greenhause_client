@@ -110,6 +110,24 @@ const getPlants = () => {
   }).then((res) => res.json());
 };
 
+const getPlantNotes = (id) => {
+  return fetch(`${API_ROOT}/plantcollections/${id}`, {
+    headers: headers(),
+  }).then((res) => res.json());
+};
+
+const patchPlantNote = (value, id) => {
+  return fetch(`${API_ROOT}/plantcollections/${id}`, {
+    method: "PATCH",
+    headers: headers(),
+    body: JSON.stringify({
+      plantcollection: {
+        plantnote: value,
+      },
+    }),
+  });
+};
+
 const deletePlant = (plantid) => {
   return fetch(`${API_ROOT}/plantcollections/${plantid}`, {
     method: "DELETE",
@@ -135,5 +153,7 @@ export default {
     postPlants,
     getPlants,
     deletePlant,
+    getPlantNotes,
+    patchPlantNote,
   },
 };

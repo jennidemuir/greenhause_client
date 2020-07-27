@@ -6,6 +6,9 @@ import Userinfo from "./Userinfo";
 import Toggle from "./Toggle";
 import Noteform from "./Noteform";
 import Canvasinfo from "./Canvasinfo";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+
 class Profile extends Component {
   state = {
     plants: [],
@@ -39,7 +42,9 @@ class Profile extends Component {
   };
 
   renderFilteredPlants = (plantId) => {
-    const filterPlants = this.state.plants.filter((p) => p.id !== plantId);
+    const filterPlants = this.state.plants.filter(
+      (p) => p.plantcard.id !== plantId
+    );
     this.setState({
       plants: filterPlants,
     });
@@ -56,7 +61,9 @@ class Profile extends Component {
             <PlantProfileCard
               renderFilteredPlants={this.renderFilteredPlants}
               key={p.id}
-              p={p}
+              commonname={p.commonname}
+              scientificname={p.scientificname}
+              id={p.id}
             />
           );
         })}

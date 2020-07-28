@@ -23,6 +23,7 @@ export class Noteform extends Component {
     console.log(e.target.id);
     api.canvas.editCanvasNote(this.state.value, e.target.id);
     this.props.renderNote(this.state.value);
+    this.props.toggle();
   };
 
   render() {

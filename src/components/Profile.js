@@ -20,10 +20,13 @@ class Profile extends Component {
       this.props.history.push("/login");
     }
 
-    api.plants.getPlants().then((plantdata) =>
-      this.setState({
-        plants: plantdata,
-      })
+    api.plants.getPlants().then(
+      (plantdata) => (
+        console.log(plantdata),
+        this.setState({
+          plants: plantdata,
+        })
+      )
     );
     api.canvas.getCanvas().then(
       (data) => (
@@ -52,44 +55,41 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="body">
+      <div id="profile" className="body">
         <br></br>
-        <Userinfo />
+        <div className="profileElement" id="user">
+          <Userinfo />
+        </div>
         <br></br>
-        {this.state.plants.map((p) => {
-          return (
-            <PlantProfileCard
-              renderFilteredPlants={this.renderFilteredPlants}
-              key={p.id}
-              commonname={p.commonname}
-              scientificname={p.scientificname}
-              id={p.id}
-            />
-          );
-        })}
-        {this.state.canvas.map((c) => {
-          return (
-            <Canvasinfo
-              renderFilteredCanvas={this.renderFilteredCanvas}
-              key={c.id}
-              img={c.image}
-              note={c.canvas_notes}
-              id={c.id}
-            />
-            // <div>
-            //   <img src={c.image} />
-            //   <p>{c.canvas_notes}</p>
-            //   <Toggle>
-            //     {({ on, toggle }) => (
-            //       <div>
-            //         <button onClick={toggle}>Make a Note</button>
-            //         {on && <Noteform on={on} id={c.id} />}
-            //       </div>
-            //     )}
-            //   </Toggle>
-            // </div>
-          );
-        })}
+        <div className="profileElement" id="plants">
+          <h1 id="plantHeader">Plant Vault</h1>
+          {this.state.plants.map((p) => {
+            return (
+              <PlantProfileCard
+                renderFilteredPlants={this.renderFilteredPlants}
+                key={p.id}
+                commonname={p.commonname}
+                scientificname={p.scientificname}
+                id={p.id}
+                img={p.img_url}
+              />
+            );
+          })}
+        </div>
+        <div className="profileElement" id="canvases">
+          <h1 id="designHeader">Garden Designs</h1>
+          {this.state.canvas.map((c) => {
+            return (
+              <Canvasinfo
+                renderFilteredCanvas={this.renderFilteredCanvas}
+                key={c.id}
+                img={c.image}
+                note={c.canvas_notes}
+                id={c.id}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

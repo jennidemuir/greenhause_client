@@ -10,19 +10,30 @@ export default function PlantCard(props) {
     };
 
     api.plants.postPlants(postBody);
+    alert(`${props.p.common_name} has been add to your Plant Vault`);
   };
   return (
-    <div>
-      <div className="image">
-        <img alt="picture unavailable " src={props.p.image_url} />
+    <div className="plantCard">
+      <div>
+        <img
+          className="plantSearchImage"
+          alt="picture unavailable "
+          src={props.p.image_url}
+        />
       </div>
-      <div className="content">
-        <div className="header">{props.p.common_name}</div>
+      <br></br>
+      <div>
+        <h5>Common Name:</h5> {props.p.common_name}
       </div>
-      <div className="extra content">
-        <span>{props.p.scientific_name}</span>
+
+      <div>
+        <h5>Scientific Name: </h5> {props.p.scientific_name}
       </div>
-      <button onClick={handlePlantClick}>Add Me</button>
+      <br></br>
+
+      <button className="addPlantButton" onClick={handlePlantClick}>
+        Add Me
+      </button>
     </div>
   );
 }

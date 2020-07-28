@@ -22,19 +22,27 @@ export class Noteinfo extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="canvasCard">
         <br></br>
-        <button id={this.props.id} onClick={this.handleCanvasDelete}>
+        <button
+          className="canvasDeleteButton"
+          id={this.props.id}
+          onClick={this.handleCanvasDelete}
+        >
           Delete This Design
         </button>
-        <img src={this.props.img} />
-        <p>{this.state.note}</p>
+        <img className="canvasImage" src={this.props.img} />
+
         <Toggle>
           {({ on, toggle }) => (
             <div>
-              <button onClick={toggle}>Make a Note</button>
+              <button className="canvasNoteButton" onClick={toggle}>
+                Design Notes
+              </button>
+              <p>{this.state.note}</p>
               {on && (
                 <Noteform
+                  toggle={toggle}
                   renderNote={this.renderNote}
                   on={on}
                   id={this.props.id}

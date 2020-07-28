@@ -1,6 +1,6 @@
 .nav {
   overflow: hidden;
-  background-color: rgb(219, 171, 171);
+  background-color: rgba(42, 134, 99, 0.938);
   position: fixed;
   top: 0;
   width: 100%;
@@ -17,6 +17,11 @@ li {
   float: left;
 }
 
+.navbutton {
+  float: right;
+  margin-right: 0;
+}
+
 .Navitem {
   float: left;
   display: block;
@@ -27,7 +32,7 @@ li {
 }
 
 .Navitem:hover {
-  background-color: #111;
+  background-color: rgba(6, 243, 125, 0.5);
 }
 
 .Navthing {
@@ -40,10 +45,122 @@ li {
 }
 
 .body {
-  margin-top: 150px;
+  background-color: mintcream;
+  margin-top: 75px;
+  margin-bottom: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+#profile {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+#user {
+  background-color: rgba(76, 235, 160, 0.247);
+  /* margin: 25px; */
+  padding: 50px;
+  /* display: fixed; */
+  align-items: center;
+  text-align-last: center;
+  justify-content: center;
+  grid-area: 1 / 1 / span 1 / span 3;
+  border-style: double;
+  border-color: rgb(4, 66, 42);
+}
+#userInfoDiv {
+  background-color: mintcream;
+  border-style: double;
+  padding: 50px;
 }
 
-.navbutton {
-  float: right;
-  margin-right: 0;
+#plants {
+  grid-column: 1;
+  grid-row: 2 / 5;
+  /* margin-left: 7px;
+  margin-right: 20px;
+  margin-top: 25px;
+  margin-bottom: 50px; */
 }
+
+#canvases {
+  grid-column: 2/4;
+  grid-row: 2/5;
+  display: fixed;
+  align-items: center;
+  justify-content: center;
+}
+#designHeader {
+  text-align-last: center;
+}
+.canvasCard {
+  background-color: mintcream;
+  border-color: rgb(4, 66, 42);
+  border-style: double;
+  margin: 15px;
+  padding: 20px;
+}
+
+.canvasImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.canvasDeleteButton {
+  float: right;
+  /* margin-right: 0; */
+}
+
+.plantCard {
+  min-height: 10em;
+  vertical-align: middle;
+  padding-left: 7px;
+  padding-right: 15px;
+  padding-bottom: 25px;
+  padding-top: 15px;
+  border-style: double;
+  border-color: rgb(4, 66, 42);
+  margin: 15px;
+  background-color: mintcream;
+}
+
+#plantHeader {
+  text-align-last: center;
+}
+
+.plantImage {
+  width: 69%;
+  height: 69%;
+  object-fit: contain;
+}
+
+.plantDeleteButton {
+  float: left;
+}
+#plants.profileElement {
+  background-color: rgba(76, 235, 160, 0.247);
+  border-style: double;
+  border-color: rgb(4, 66, 42);
+}
+
+#canvases.profileElement {
+  background-color: rgba(76, 235, 160, 0.247);
+  border-style: double;
+  border-color: rgb(4, 66, 42);
+}
+.plantSearchImage {
+  width: 69%;
+  height: 69%;
+  object-fit: contain;
+  padding-left: 125px;
+}
+
+/* .addPlantButton {
+  transition-duration: 0.4s;
+}
+.addPlantButton:hover {
+  background-color: #4caf50; /* Green */
+/* color: white;
+} */

@@ -24,6 +24,7 @@ export class Plantform extends Component {
     console.log("target", e.target.id, "value", this.state.value);
     api.plants.patchPlantNote(this.state.value, e.target.id);
     this.props.renderPlantNote(this.state.value);
+    this.props.toggle();
   };
   render() {
     return (

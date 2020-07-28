@@ -7,6 +7,12 @@ class Userform extends Component {
     value: " ",
   };
 
+  componentDidMount() {
+    this.setState({
+      value: this.props.bio,
+    });
+  }
+
   handleChange = (e) => {
     this.setState({
       value: e.target.value,
@@ -18,6 +24,7 @@ class Userform extends Component {
     // console.log(this.state.value);
     api.auth.patchCurrentUser(this.state.value);
     this.props.renderBio(this.state.value);
+    this.props.toggle();
   };
 
   render() {
@@ -25,14 +32,16 @@ class Userform extends Component {
       <div>
         <br></br>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Bio:
-            <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </label>
+          <TextField
+            id="outlined-multiline-static"
+            label="Bio"
+            multiline
+            rows={4}
+            value={this.state.value}
+            variant="filled"
+            onChange={this.handleChange}
+          />{" "}
+          <br></br>
           <input type="submit" value="Submit" />
         </form>
       </div>

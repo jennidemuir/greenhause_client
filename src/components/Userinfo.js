@@ -27,7 +27,7 @@ export class Userinfo extends Component {
   };
   render() {
     return (
-      <div>
+      <div id="userInfoDiv">
         <h1>{this.state.username}'s Profile</h1>
         <p>{this.state.bio}</p>
 
@@ -35,7 +35,14 @@ export class Userinfo extends Component {
           {({ on, toggle }) => (
             <div>
               <button onClick={toggle}>Edit Bio</button>
-              {on && <Userform renderBio={this.renderBio} on={on} />}
+              {on && (
+                <Userform
+                  toggle={toggle}
+                  bio={this.state.bio}
+                  renderBio={this.renderBio}
+                  on={on}
+                />
+              )}
             </div>
           )}
         </Toggle>

@@ -11,8 +11,8 @@ export class Canvas extends Component {
   }
   render() {
     return (
-      <div className="body">
-        <h1>Design Your Garden!</h1>
+      <div id="canvasPage" className="body">
+        <h1>Design Your Garden🎨</h1>
         <Toggle>
           {({ on, toggle }) => (
             <div>

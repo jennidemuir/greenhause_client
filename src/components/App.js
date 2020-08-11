@@ -41,7 +41,7 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="appDiv">
         <Navbar
           title="GreenHause"
           currentUser={this.state.auth.currentUser}

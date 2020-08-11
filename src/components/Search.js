@@ -17,7 +17,9 @@ class Search extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label id="searchLabel">Search Plants: </label>
+          <label id="searchLabel">
+            <h4>Search Plants: </h4>
+          </label>
           <input
             onChange={this.handleChange}
             placeholder="search plants"

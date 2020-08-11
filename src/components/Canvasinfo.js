@@ -46,7 +46,7 @@ export class Noteinfo extends Component {
                   renderNote={this.renderNote}
                   on={on}
                   id={this.props.id}
-                  note={this.props.note}
+                  note={this.state.note}
                 />
               )}
             </div>

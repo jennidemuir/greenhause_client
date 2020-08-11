@@ -8,6 +8,7 @@ import Noteform from "./Noteform";
 import Canvasinfo from "./Canvasinfo";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 class Profile extends Component {
   state = {
@@ -45,9 +46,7 @@ class Profile extends Component {
   };
 
   renderFilteredPlants = (plantId) => {
-    const filterPlants = this.state.plants.filter(
-      (p) => p.plantcard.id !== plantId
-    );
+    const filterPlants = this.state.plants.filter((p) => p.id !== plantId);
     this.setState({
       plants: filterPlants,
     });
@@ -61,21 +60,25 @@ class Profile extends Component {
           <Userinfo />
         </div>
         <br></br>
+
         <div className="profileElement" id="plants">
-          <h1 id="plantHeader">Plant Vault</h1>
-          {this.state.plants.map((p) => {
-            return (
-              <PlantProfileCard
-                renderFilteredPlants={this.renderFilteredPlants}
-                key={p.id}
-                commonname={p.commonname}
-                scientificname={p.scientificname}
-                id={p.id}
-                img={p.img_url}
-              />
-            );
-          })}
+          <div>
+            <h1 id="plantHeader">Plant Vault</h1>
+            {this.state.plants.map((p) => {
+              return (
+                <PlantProfileCard
+                  renderFilteredPlants={this.renderFilteredPlants}
+                  key={p.id}
+                  commonname={p.commonname}
+                  scientificname={p.scientificname}
+                  id={p.id}
+                  img={p.img_url}
+                />
+              );
+            })}
+          </div>
         </div>
+
         <div className="profileElement" id="canvases">
           <h1 id="designHeader">Garden Designs</h1>
           {this.state.canvas.map((c) => {

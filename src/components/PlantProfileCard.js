@@ -24,9 +24,10 @@ class PlantProfileCard extends Component {
   };
 
   handleDeletePlantClick = () => {
-    const id = this.props.p.id;
+    console.log(this.state.id);
+    const id = this.state.id;
     api.plants.deletePlant(id);
-    this.props.renderFilteredPlants(this.props.p.id);
+    this.props.renderFilteredPlants(id);
   };
   render() {
     return (
@@ -36,7 +37,7 @@ class PlantProfileCard extends Component {
             className="plantDeleteButton"
             onClick={this.handleDeletePlantClick}
           >
-            Delete Me
+            Remove Plant
           </button>
           <br></br>
           <br></br>
